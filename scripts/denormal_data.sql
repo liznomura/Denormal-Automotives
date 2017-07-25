@@ -1,5 +1,5 @@
 -- db denormal_cars
-CREATE TABLE IF NOT EXISTS car_models
+CREATE TABLE IF NOT EXISTS denormal_data
 (
   make_code character varying(125) NOT NULL,
   make_title character varying(125) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS car_models
   year integer NOT NULL
 );
 
-INSERT INTO car_models VALUES
+INSERT INTO denormal_data VALUES
 ('ACURA','Acura','CL_MODELS','CL Models (4)',2000),
 ('ACURA','Acura','CL_MODELS','CL Models (4)',2001),
 ('ACURA','Acura','CL_MODELS','CL Models (4)',2002),
