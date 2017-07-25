@@ -36,7 +36,12 @@
 
 -- \i scripts/denormal_data.sql;
 
-INSERT INTO car_makes (make_code, make_title)
-SELECT DISTINCT make_code, make_title
-FROM denormal_data;
+-- INSERT INTO car_makes (make_code, make_title)
+-- SELECT DISTINCT make_code, make_title
+-- FROM denormal_data
+-- ORDER BY make_code;
 
+INSERT INTO car_models (model_code, model_title, car_make_code)
+SELECT DISTINCT d.model_code, d.model_title, (SELECT m.make_id FROM car_makes m WHERE m.make_code = d.make_code)
+FROM denormal_data d
+ORDER BY car_make_code;
