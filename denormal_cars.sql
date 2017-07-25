@@ -16,6 +16,10 @@
 -- FROM car_models
 -- WHERE make_code = 'VOLKS';
 
-SELECT DISTINCT make_code, model_code, model_title, year
+-- SELECT DISTINCT make_code, model_code, model_title, year
+-- FROM car_models
+-- WHERE make_code = 'LAM';
+
+SELECT DISTINCT make_code, make_title, model_code, model_title, year
 FROM car_models
-WHERE make_code = 'LAM';
+WHERE year BETWEEN 2010 AND 2015;
