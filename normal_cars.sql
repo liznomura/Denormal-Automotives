@@ -50,3 +50,33 @@ INSERT INTO car_year (year_id, year)
 SELECT DISTINCT (year % 100), d.year
 FROM denormal_data d
 ORDER BY year;
+
+INSERT INTO model_years (car_model_key, car_year_key)
+SELECT DISTINCT m.model_id, y.year_id
+FROM car_models m INNER JOIN denormal_data d ON m.model_title = d.model_title INNER JOIN car_year y ON y.year = d.year
+ORDER BY m.model_id;
+
+SELECT DISTINCT make_title
+FROM car_makes;
+-- 71
+
+SELECT mo.model_title
+FROM car_models mo INNER JOIN car_makes ma ON ma.make_id = mo.car_make_code
+WHERE make_code = 'VOLKS';
+-- 27
+
+SELECT DISTINCT ma.make_code, ma.make_title, mo.model_code, mo.model_title, y.year
+FROM car_year y
+INNER JOIN model_years my ON y.year_id = my.car_year_key
+INNER JOIN car_models mo ON mo.model_id = my.car_model_key
+INNER JOIN car_makes ma ON ma.make_id = mo.car_make_code
+WHERE ma.make_code = 'LAM';
+-- 136
+
+SELECT DISTINCT ma.make_code, ma.make_title, mo.model_code, mo.model_title, y.year
+FROM car_year y
+INNER JOIN model_years my ON y.year_id = my.car_year_key
+INNER JOIN car_models mo ON mo.model_id = my.car_model_key
+INNER JOIN car_makes ma ON ma.make_id = mo.car_make_code
+WHERE y.year BETWEEN 2010 AND 2015;
+-- 7884
